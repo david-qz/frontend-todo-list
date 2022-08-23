@@ -1,0 +1,24 @@
+main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: flex-start;
+    gap: 50px;
+}
+
+.auth-form {
+    width: 350px;
+}
+.auth-form input {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.auth-form button {
+    float: right;
+    padding: 5px;
+}
+.auth-form .error-message {
+    color: rgb(245, 60, 60);
+}
