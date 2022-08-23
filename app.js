@@ -1,8 +1,19 @@
-// import functions and grab DOM elements
+// Services
+import UserService from './services/UserService.js';
 
-// let state
+// Components
+import createAuthForm from './components/AuthForm.js';
 
-// set event listeners 
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state
+createAuthForm(document.querySelector('#sign-up-form'), {
+    submitHandler: handleSignUp
+});
+
+async function handleSignUp(email, password) {
+    const response = await UserService.signUp({ email, password });
+
+    if (response.ok) {
+        location.replace('/todos');
+    } else {
+        return (await response.json()).message;
+    }
+}
