@@ -18,6 +18,10 @@ header {
     align-items: center;
     background-color: var(--header-background);
 }
+header .logo {
+    height: 64px;
+    margin: 10px;
+}
 
 main {
     padding: 20px;
