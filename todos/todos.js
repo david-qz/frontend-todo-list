@@ -1,6 +1,11 @@
 // Imports
 import UserService from '../services/UserService.js';
+import TodoService from '../services/TodoService.js';
 import createNewTodoForm from '../components/NewTodoForm.js';
+import createTodoList from '../components/TodoList.js';
+
+// State
+let todos = [];
 
 // Handlers
 async function handlePageLoad() {
@@ -10,12 +15,15 @@ async function handlePageLoad() {
         return;
     }
 
+    todos = await TodoService.getTodos();
+
     display();
 }
 
 async function handleNewTodo(task) {
-    // TODO: implement this
-    console.log(task);
+    const todo = await TodoService.addTodo(task);
+    todos.push(todo);
+    display();
 }
 
 // Components
@@ -23,8 +31,11 @@ const NewTodoForm = createNewTodoForm(document.querySelector('#new-todo-form'), 
     handleNewTodo
 });
 
+const TodoList = createTodoList(document.querySelector('#todo-list'));
+
 function display() {
     NewTodoForm();
+    TodoList(todos);
 }
 
 handlePageLoad();
