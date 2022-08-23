@@ -28,7 +28,25 @@ async function signIn(userInfo) {
     return response;
 }
 
+async function getUser() {
+    const response = await fetch(API_BASE + '/api/v1/users/me', {
+        method: 'Get',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+    });
+
+    if (!response.ok) {
+        return null;
+    }
+
+    return await response.json();
+}
+
 export default {
     signUp,
-    signIn
+    signIn,
+    getUser
 };

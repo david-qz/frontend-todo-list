@@ -1,16 +1,14 @@
-// Services
+// Imports
 import UserService from './services/UserService.js';
-
-// Components
 import createAuthForm from './components/AuthForm.js';
 
-createAuthForm(document.querySelector('#sign-up-form'), {
-    submitHandler: handleSignUp
-});
-
-createAuthForm(document.querySelector('#sign-in-form'), {
-    submitHandler: handleSignIn
-});
+// Handlers
+async function handlePageLoad() {
+    const user = await UserService.getUser();
+    if (user) {
+        location.replace('/todos');
+    }
+}
 
 async function handleSignUp(email, password) {
     const response = await UserService.signUp({ email, password });
@@ -31,3 +29,14 @@ async function handleSignIn(email, password) {
         return (await response.json()).message;
     }
 }
+
+// Components
+createAuthForm(document.querySelector('#sign-up-form'), {
+    submitHandler: handleSignUp
+});
+
+createAuthForm(document.querySelector('#sign-in-form'), {
+    submitHandler: handleSignIn
+});
+
+handlePageLoad();
