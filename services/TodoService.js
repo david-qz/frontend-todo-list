@@ -27,7 +27,22 @@ async function addTodo(task) {
     return await response.json();
 }
 
+async function updateTodo(todoId, data) {
+    const response = await fetch(API_BASE + `/api/v1/todos/${todoId}`, {
+        method: 'Put',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        credentials: 'include'
+    });
+
+    return await response.json();
+}
+
 export default {
     getTodos,
-    addTodo
+    addTodo,
+    updateTodo
 };
