@@ -26,12 +26,25 @@ async function handleNewTodo(task) {
     display();
 }
 
+async function handleTodoToggleCompleted(todoId) {
+    // TODO: implement this
+    console.log('toggled', todoId);
+}
+
+async function handleDeleteTodo(todoId) {
+    // TODO: implement this
+    console.log('deleted', todoId);
+}
+
 // Components
 const NewTodoForm = createNewTodoForm(document.querySelector('#new-todo-form'), {
     handleNewTodo
 });
 
-const TodoList = createTodoList(document.querySelector('#todo-list'));
+const TodoList = createTodoList(document.querySelector('#todo-list'), {
+    handleTodoToggleCompleted,
+    handleDeleteTodo
+});
 
 function display() {
     NewTodoForm();
