@@ -41,8 +41,22 @@ async function updateTodo(todoId, data) {
     return await response.json();
 }
 
+async function deleteTodo(todoId) {
+    const response = await fetch(API_BASE + `/api/v1/todos/${todoId}`, {
+        method: 'Delete',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+    });
+
+    return await response.json();
+}
+
 export default {
     getTodos,
     addTodo,
-    updateTodo
+    updateTodo,
+    deleteTodo
 };
