@@ -36,8 +36,10 @@ async function handleTodoToggleCompleted(todoId) {
 }
 
 async function handleDeleteTodo(todoId) {
-    // TODO: implement this
-    console.log('deleted', todoId);
+    const index = todos.findIndex(x => x.id === todoId);
+    await TodoService.deleteTodo(todoId);
+    todos.splice(index, 1);
+    display();
 }
 
 // Components
