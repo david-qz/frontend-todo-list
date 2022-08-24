@@ -4,9 +4,11 @@ main {
     align-items: center;
 }
 
+#new-todo-form {
+    min-width: 380px;
+    max-width: 460px;
+}
 #new-todo-form input {
-    min-width: 320px;
-    max-width: 400px;
     font-size: 1.5em;
     width: 100%;
     border-radius: 0;
@@ -15,8 +17,8 @@ main {
 }
 
 #todo-list {
-    min-width: 320px;
-    max-width: 400px;
+    min-width: 380px;
+    max-width: 460px;
 }
 #todo-list li {
     background-color: white;
