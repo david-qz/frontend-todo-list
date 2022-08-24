@@ -27,8 +27,12 @@ async function handleNewTodo(task) {
 }
 
 async function handleTodoToggleCompleted(todoId) {
-    // TODO: implement this
-    console.log('toggled', todoId);
+    const index = todos.findIndex(x => x.id === todoId);
+    const todo = todos[index];
+
+    const updatedTodo = await TodoService.updateTodo(todoId, { completed: !todo.completed });
+    todos.splice(index, 1, updatedTodo);
+    display();
 }
 
 async function handleDeleteTodo(todoId) {
