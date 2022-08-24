@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:7890';
+const API_BASE = 'https://davidqz-todos.herokuapp.com';
 
 async function getTodos() {
     const response = await fetch(API_BASE + '/api/v1/todos', {
