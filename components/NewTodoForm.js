@@ -4,6 +4,7 @@ export default function createNewTodoForm(form, { handleNewTodo }) {
 
         const formData = new FormData(e.target);
         await handleNewTodo(formData.get('task'));
+        e.target.reset();
     });
 
     return () => {};
